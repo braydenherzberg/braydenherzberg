@@ -1,37 +1,39 @@
 # Cado
 
-**Released iOS app · Source code private**
+**Available on the App Store · Source code private**
 
-[View on the App Store](https://apps.apple.com/us/app/cado-meal-prep-coach/id6797121303) · [Tributary Studios](https://tributarystudios.com/)
+[App Store](https://apps.apple.com/us/app/cado-meal-prep-coach/id6797121303) · [Tributary Studios](https://tributarystudios.com/)
 
-Cado turns food preferences, schedules, and serving needs into weekly meal plans, recipes, and a combined grocery list. It serves people who want to plan their meals and shopping together, including those cooking for one or deliberately preparing extra portions.
+iOS application for weekly meal planning, recipes, and grocery lists. Plans account for food preferences, schedules, and the number of people eating.
 
-## My contribution
+## Contributions
 
-I developed Cado through Tributary Studios, including its SwiftUI interfaces, local SwiftData models, meal-plan and grocery workflows, and the integration with a server-side generation proxy. The public App Store listing identifies Tributary Studios LLC as the developer and seller.
+- Developed the application through Tributary Studios, including SwiftUI interfaces and local SwiftData models.
+- Built meal-plan, recipe, and grocery-list functions and integrated the server-side generation proxy.
+- Implemented validation of generated meal plans before storing them in the application.
 
-## Workflow
+## Screenshots
 
-![Three actual Cado simulator views: a planned day with meals, a grocery checklist grouped by category, and a recipe with ingredients and cooking steps.](../assets/cado/workflow.png)
+![Cado screens showing a planned day, a categorized grocery checklist, and recipe ingredients and instructions.](../assets/cado/workflow.png)
 
-1. **Review the plan.** Browse scheduled meals and open a recipe from the selected day.
-2. **Shop the list.** Track purchased items in a categorized list connected to the week's meals.
-3. **Cook the meal.** Read serving quantities, ingredients, and instructions in the recipe detail.
+1. **Meal plan:** Review scheduled meals and open recipes.
+2. **Grocery list:** Track purchases by category.
+3. **Recipe:** Review servings, ingredients, and cooking instructions.
 
-Full-size views: [plan](../assets/cado/01-plan.png) · [groceries](../assets/cado/02-groceries.png) · [recipe](../assets/cado/03-recipe.png).
+Full-size screenshots: [meal plan](../assets/cado/01-plan.png) · [grocery list](../assets/cado/02-groceries.png) · [recipe](../assets/cado/03-recipe.png).
 
-These are existing, authentic simulator captures from the documented v1.0.2 marketing-fixture set. The displayed nutrition, prices, and purchase counts are demonstration values. Interface content has not been generated or replaced for this portfolio; these are independent copies of the raw captures.
+Screenshots are from the v1.0.2 simulator capture set and use sample data. Nutrition values, prices, and purchase counts are demonstration values.
 
-## Engineering decision
+## Design decision
 
-Generated text needs to become consistent application data. The plan-generation pipeline checks the expected meal slots, content, and applicable nutrition constraints before accepting a plan for storage. This introduces validation and retry complexity, but gives the app a defined way to reject malformed output instead of persisting every response. Local SwiftData models then connect meals, recipes, and grocery records across the app.
+Generated plans are checked for required meal slots, content, and applicable nutrition constraints before storage. Validation and retries add complexity, but allow invalid responses to be rejected before storage. SwiftData stores the accepted meals, recipes, and grocery records locally; generation requests are processed through the backend.
 
-**Technology:** Swift, SwiftUI, SwiftData, StoreKit, and a TypeScript proxy on Firebase Cloud Functions for generation requests. Plans persist locally; generation requests are processed through the backend.
+**Technologies:** Swift, SwiftUI, SwiftData, StoreKit, TypeScript, Firebase Cloud Functions.
 
-## Status and evidence
+## Status
 
-Cado has a public App Store listing with a **v1.0.2** version-history entry dated August 22, 2026. The screenshots demonstrate the implemented plan-to-shopping-to-recipe workflow. They are fixture captures, not a benchmark of plan generation or evidence of health outcomes. Ongoing development changes are not presented as verified App Store behavior.
+Version v1.0.2 is listed on the [App Store](https://apps.apple.com/us/app/cado-meal-prep-coach/id6797121303), dated August 22, 2026. The public release and ongoing development changes are tracked separately. Source code is private.
 
-Cado provides general meal-planning and nutrition information, not medical advice. Source code remains private.
+Cado provides general meal-planning and nutrition information, not medical advice.
 
 [Back to profile](../README.md)

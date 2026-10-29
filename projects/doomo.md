@@ -1,41 +1,41 @@
 # dooMO
 
-**Live web product · iOS in development · Source code private**
+**Web application available · iOS in development · Source code private**
 
-[Visit dooMO](https://doomotasks.com/) · [Tributary Studios](https://tributarystudios.com/)
+[Website](https://doomotasks.com/) · [Tributary Studios](https://tributarystudios.com/)
 
-dooMO organizes facility maintenance from request to completion. Staff submit work orders, administrators assign teams, and custodians record progress and completion. Building-level organization and role-based access support schools, campuses, property managers, and other facilities teams.
+Facility maintenance software for schools, campuses, property managers, and other organizations with multiple buildings. Staff submit work orders, administrators assign work, and custodians update tasks and record completion.
 
-## My contribution
+## Contributions
 
-I founded Tributary Studios and independently built dooMO's web and iOS platform. My work spans the application interfaces, Firebase-backed data and API workflows, shared product definitions, and the task-management experience.
+- Founded Tributary Studios and independently developed dooMO's web and iOS applications.
+- Built work-order submission, assignments, comments, photo records, and task status tracking.
+- Implemented Firebase-backed data and API functions, role-based permissions, and building-level access controls.
 
-## Workflow
+## Screenshots
 
-![dooMO task queue showing fictional maintenance requests grouped by building, with priority, status, and assignee information.](../assets/doomo/01-tasks.png)
+![dooMO task list showing sample requests grouped by building, with priorities, status, and assignments.](../assets/doomo/01-tasks.png)
 
-**1. Review the queue.** Find open work across buildings and inspect priority and assignment information.
+**Task list:** Review requests across buildings.
 
-![dooMO maintenance-task detail showing the Assign Team panel with fictional custodians and their active task counts.](../assets/doomo/02-assignment.png)
+![dooMO task detail showing the assignment panel and sample staff workload counts.](../assets/doomo/02-assignment.png)
 
-**2. Assign the work.** Review a request and the team's active workload in the task detail.
+**Assignment:** Review the request and assign staff from the task detail.
 
-![dooMO completed-task detail with a fictional completion-photo placeholder, completion timestamp, and comment thread.](../assets/doomo/03-completion.png)
+![dooMO completed task showing a sample completion photo, timestamp, and comments.](../assets/doomo/03-completion.png)
 
-**3. Keep the completion record.** Photos, notes, comments, and timestamps preserve context after the work is complete.
+**Completion:** Record photos, notes, comments, and completion time.
 
-These independent image copies come from the product's existing marketing capture set and its seeded **fictional showcase organization**. They contain demonstration records, not customer activity. The displayed counts are fixture data.
+Screenshots use the product's sample organization and demonstration records. They contain no customer data.
 
-## Engineering decision
+## Design decision
 
-Web and iOS need to agree on product limits. A shared JSON definition generates TypeScript and Swift mirrors, with parity checks to catch drift. This adds a generation step, but makes a product-rule change explicit across clients instead of relying on two separately maintained sets of values. Server-side authorization remains part of the backend.
+Shared plan limits generate TypeScript and Swift definitions for the web and iOS clients. This requires generation and consistency checks, but reduces differences between client implementations. The backend enforces authorization separately.
 
-**Technology:** Next.js, React, TypeScript, Tailwind CSS; SwiftUI and Swift Charts on iOS; Firebase Authentication, Cloud Firestore, and an Express/TypeScript API on Firebase Cloud Functions; Vercel web hosting.
+**Technologies:** Next.js, React, TypeScript, Tailwind CSS, SwiftUI, Swift Charts, Firebase Authentication, Cloud Firestore, Express, Firebase Cloud Functions, Vercel.
 
-## Status and evidence
+## Status
 
-The public web product is reachable at **doomotasks.com**. Its public site presents the task, assignment, recurring-work, completion-record, and statistics workflows. The native iOS app exists in the codebase; the public site still labels it **coming soon**, so it is presented here as in development.
-
-These screenshots show an implemented workflow. They do not establish adoption, time savings, or deployment of every change in the development branch. Source code remains private.
+The web application is available at [doomotasks.com](https://doomotasks.com/). The iOS application is in development and listed as coming soon on the public website. Source code is private.
 
 [Back to profile](../README.md)

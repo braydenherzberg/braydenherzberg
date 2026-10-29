@@ -1,43 +1,50 @@
-# Crater
+# Crater Tracker
 
-**Research tool · Public release v0.5.1 · Python desktop application**
+**Research software · Public release v0.5.1**
 
-[Source & documentation](https://github.com/braydenherzberg/Crater_Tracker) · [Downloads](https://github.com/braydenherzberg/Crater_Tracker/releases/latest) · [Method & limits](https://github.com/braydenherzberg/Crater_Tracker/blob/main/docs/analysis_method.md) · [Tracking benchmark](https://github.com/braydenherzberg/Crater_Tracker/blob/main/docs/benchmark.md)
+[Source and documentation](https://github.com/braydenherzberg/Crater_Tracker) · [Downloads](https://github.com/braydenherzberg/Crater_Tracker/releases/latest) · [Measurement method](https://github.com/braydenherzberg/Crater_Tracker/blob/main/docs/analysis_method.md) · [Tracking benchmark](https://github.com/braydenherzberg/Crater_Tracker/blob/main/docs/benchmark.md)
 
-Crater helps researchers review side-camera videos of crater development, including plume–surface interaction experiments. An operator identifies the physical interface; the app refines the line locally, tracks between keyframes, flags weak evidence, and exports calibrated width, vertical depth, and cross-section area. Processing stays offline.
+Python desktop software for analyzing crater development in side-camera videos of plume–surface interaction experiments. Users trace the crater interface, calibrate the image, review tracking, and export width, vertical depth, and cross-section area. Video processing runs offline.
 
-## My contribution
+## Contributions
 
-I developed the Python analysis software as part of my work with the UCF Hawking Center's Knights Research Scholar Program team, where my responsibilities include nozzle design and data analysis. The software brings tracing, calibration, review, and export into one desktop workflow.
+- Developed the application as a member of the UCF Hawking Center's Knights Research Scholar Program team, with responsibilities in nozzle design and data analysis.
+- Implemented operator-guided tracing, local edge snapping, keyframe interpolation, and tracking-quality review.
+- Built calibration controls, session saving, CSV export, and JSON records of analysis settings.
 
-## Workflow
+## Screenshots
 
-![Crater showing a seven-point guide on the bundled synthetic practice clip before physical scale is confirmed; measurements remain in pixels.](../assets/crater/01-trace.png)
+![Crater showing a seven-point guide before calibration, with measurements in pixels.](../assets/crater/01-trace.png)
 
-**1. Define the interface.** Place a guide on the intended boundary. Before calibration is confirmed, the app reports pixels.
+**Trace:** Select the crater interface. Measurements remain in pixels until the scale is confirmed.
 
-![Crater showing an interpolated profile between two keyframes, with a confirmed 64 mm practice-image width and the tracked cross-section below the video.](../assets/crater/02-review.png)
+![Crater showing an interpolated profile between two keyframes with a confirmed practice-image scale.](../assets/crater/02-review.png)
 
-**2. Calibrate and review.** Inspect the tracked profile, its source, and the timeline between operator keyframes.
+**Review:** Inspect the profile, measurements, and tracking between keyframes.
 
-![Crater showing a reviewed keyframe, a calibrated profile, and the configured time-series export interval on synthetic practice data.](../assets/crater/03-export.png)
+![Crater showing a reviewed keyframe and calibrated time-series export controls.](../assets/crater/03-export.png)
 
-**3. Export with provenance.** Write sampled measurements to CSV and retain the JSON metadata describing calibration, keyframes, and settings.
+**Export:** Save measurements to CSV with calibration, keyframe, and analysis settings in a separate JSON file.
 
-[Watch the three-state workflow demo](../assets/crater/demo.gif). These are captures of the actual PySide6 application rendered locally with the bundled **synthetic** clip. The demonstrated dimensions are practice values, not research measurements.
+[Workflow demo](../assets/crater/demo.gif). Screenshots use the bundled synthetic practice video; displayed dimensions are practice values.
 
-## Engineering decision
+## Design decision
 
-Strong image edges can belong to reflections, dust, or container walls. I use an operator-defined guide with a bounded local edge search instead of treating the strongest automatic boundary as the physical crater. This requires annotation and review, but keeps the measurement tied to an explicitly selected interface. The original threshold tuner remains available for reviewed starting guides.
+The operator selects the physical interface before edge snapping. Reflections, dust, and container walls can produce strong edges that are not the crater. A bounded search around the guide reduces the risk of tracking a different boundary, at the cost of manual annotation and review. The original threshold tuner remains available.
 
-**Technology:** Python, PySide6, OpenCV, NumPy; calibrated CSV exports and JSON session/provenance records.
+**Technologies:** Python, PySide6, OpenCV, NumPy, CSV, JSON.
 
-## Status and evidence
+## Status and validation
 
-Version **v0.5.1** has published macOS Apple silicon, macOS Intel, and Windows release assets. The local demonstration exercised tracing, calibration, keyframe interpolation, session saving, and CSV/metadata export on the practice clip; it does not establish experimental accuracy.
+Version v0.5.1 has published builds for Apple silicon Macs, Intel Macs, and Windows. The local synthetic demonstration completed tracing, calibration, interpolation, session saving, and CSV/JSON export.
 
-The [method notes](https://github.com/braydenherzberg/Crater_Tracker/blob/main/docs/analysis_method.md#measured-repeatability) report a repeatability experiment on **one frame**, Mars Perfect Run 3 frame 9,191: twelve simulated operators placed seven clicks with ±4 px random error near the same line. Reported width standard deviation was **50.8 px without snapping** and **8.9 px with snapping**; depth standard deviation was **4.8 px** and **2.0 px**, respectively.
+The [documented repeatability experiment](https://github.com/braydenherzberg/Crater_Tracker/blob/main/docs/analysis_method.md#measured-repeatability) used one frame, Mars Perfect Run 3 frame 9,191. Twelve simulated operators placed seven clicks with ±4 px random error near the same line:
 
-This measures sensitivity to simulated click placement. It is **not independent physical-accuracy validation**. Representative hand-labelled comparisons, calibration in the crater's optical plane, and review of rim/interface definitions remain necessary. Cross-section area is not volume; the confidence score is a review aid, not an uncertainty interval.
+| Standard deviation | Without edge snapping | With edge snapping |
+| --- | --- | --- |
+| Width | 50.8 px | 8.9 px |
+| Depth | 4.8 px | 2.0 px |
+
+These results measure sensitivity to click placement, **not independent physical accuracy**. Physical validation requires representative labelled frames, review of interface and rim definitions, and calibration in the crater's optical plane. Cross-section area is not volume. The confidence score is a tracking-review indicator, not an uncertainty interval.
 
 [Back to profile](../README.md)

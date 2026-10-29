@@ -1,36 +1,36 @@
 # Cheers
 
-**Released iOS app · Source code private**
+**Available on the App Store · Source code private**
 
-[View on the App Store](https://apps.apple.com/us/app/cheers-lockscreen-widgets/id6759501004)
+[App Store](https://apps.apple.com/us/app/cheers-lockscreen-widgets/id6759501004)
 
-Cheers lets friends share short messages through lock-screen and home-screen widgets. Users exchange friend codes, write a message of up to 50 characters, and see incoming cheers in the app and widget experience.
+iOS application for sending messages of up to 50 characters to friends' lock-screen and home-screen widgets. Users connect through friend codes.
 
-## My contribution
+## Contributions
 
-I built the SwiftUI application, WidgetKit experience, and Firebase-backed friend and message workflows. The public App Store listing names me as the developer and Tributary Studios LLC as the seller.
+- Developed the SwiftUI application and WidgetKit extension.
+- Built Firebase-backed friend relationships and message storage.
+- Implemented shared widget caching, preference synchronization, and push-update handling.
 
-## Workflow
+## Screenshots
 
-![Two actual Cheers app views with fictional data: incoming messages from friends and a message composer with recipient widget preview.](../assets/cheers/workflow.png)
+![Cheers screens showing sample incoming messages and a message composer with an in-app widget preview.](../assets/cheers/workflow.png)
 
-1. **Choose a friend.** Review incoming messages and select a recipient.
-2. **Compose a cheer.** Write a short message and review the in-app widget preview.
+1. **Friends:** Review messages and select a recipient.
+2. **Composer:** Write a message and review the widget preview.
 
-Individual views: [friends](../assets/cheers/01-friends.png) · [composer](../assets/cheers/02-compose.png).
+Full-size screenshots: [friends](../assets/cheers/01-friends.png) · [composer](../assets/cheers/02-compose.png).
 
-These are existing authentic v1.1 simulator captures using the app’s fictional screenshot fixtures, rather than fresh captures from this review. The composer contains the app's own widget preview; it is not evidence of a message delivered to a second device.
+Screenshots are from the v1.1 simulator capture set and use fictional contacts and messages. The composer shows an in-app widget preview.
 
-## Engineering decision
+## Design decision
 
-The app and widget share a local App Group cache, while Firebase stores friend relationships and messages. This separates widget rendering from the main app's interface and supports cached timeline content. It also creates a consistency problem: updates and privacy preferences must be mirrored between the app, cache, and widget. The implementation includes cache refreshes and push-update handling; a screenshot alone cannot verify end-to-end delivery.
+An App Group cache shares message content and preferences between the app and widget. Firebase stores friend relationships and messages. Cached content supports widget timelines, but requires synchronization when messages or privacy preferences change. Device-to-device delivery was not tested during this portfolio review.
 
-**Technology:** Swift, SwiftUI, WidgetKit, App Groups, Firebase Authentication, Cloud Firestore, Firebase Cloud Functions, and APNs widget-update handling.
+**Technologies:** Swift, SwiftUI, WidgetKit, App Groups, Firebase Authentication, Cloud Firestore, Firebase Cloud Functions, APNs.
 
-## Status and evidence
+## Status
 
-Cheers has a public App Store listing, including a **v1.1.1** version-history entry. The portfolio captures illustrate the native workflow; device-to-device message delivery is outside this capture session's verification.
-
-Source code remains private.
+Version v1.1.1 is listed on the [App Store](https://apps.apple.com/us/app/cheers-lockscreen-widgets/id6759501004). The listing identifies Brayden Herzberg as the developer and Tributary Studios LLC as the seller. Source code is private.
 
 [Back to profile](../README.md)

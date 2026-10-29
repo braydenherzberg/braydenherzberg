@@ -1,12 +1,12 @@
-# Portfolio images
+# Screenshot sources
 
-All images are independent files held in this public portfolio. No image depends on access to a private repository.
+Images are stored in this portfolio repository and do not require access to private repositories.
 
-| Set | Origin | What the images establish |
+| Project | Source | Contents |
 | --- | --- | --- |
-| `crater/` | Actual PySide6 application rendered locally with its bundled synthetic practice clip | Tracing, calibration, interpolation, and export UI; practice dimensions only |
-| `doomo/` | Existing product marketing captures, checked against the seeded fictional showcase records | Task queue, assignment, and completion-record UI; fixture counts only |
-| `cheers/` | Actual native app views with fictional screenshot fixtures | Friends and composition with in-app widget preview; no delivery claim |
-| `cado/` | Existing authentic v1.0.2 simulator captures using the documented marketing fixture | Plan, grocery checklist, and recipe UI; demonstration nutrition, prices, and purchase counts |
+| Crater | Local application run with the bundled synthetic practice video | Tracing, calibration, tracking review, and export controls |
+| dooMO | Existing marketing screenshots of the sample organization | Task list, assignment, and completion records |
+| Cado | Existing v1.0.2 simulator screenshots with sample data | Meal plan, grocery list, and recipe |
+| Cheers | Existing v1.1 simulator screenshots with fictional contacts and messages | Friends list and composer with widget preview |
 
-Screenshots are resized and composed without generating or replacing interface content. Image metadata is removed. Alt text and adjacent captions describe each view and its demonstration-data boundary.
+Images were resized and composed without changing interface content. Embedded metadata was removed. Displayed measurements, nutrition values, prices, and counts are demonstration data.
